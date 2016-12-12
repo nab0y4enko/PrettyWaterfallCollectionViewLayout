@@ -21,47 +21,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XTc-cF-fGw">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lGM-UT-hUi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YYC-Kd-2GS">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="Un8-hA-yyS" customClass="PrettyWaterfallCollectionViewLayout" customModule="PrettyWaterfallCollectionViewLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExampleCell" id="63k-98-1T3">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExampleCell" id="6kc-wq-QEU" customClass="ColoredCell" customModule="Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WL-27-Ta2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="5WL-27-Ta2" firstAttribute="top" secondItem="6kc-wq-QEU" secondAttribute="top" id="5EM-6d-yzc"/>
+                                            <constraint firstAttribute="bottom" secondItem="5WL-27-Ta2" secondAttribute="bottom" id="aZm-n6-8mQ"/>
+                                            <constraint firstItem="5WL-27-Ta2" firstAttribute="leading" secondItem="6kc-wq-QEU" secondAttribute="leading" id="k6u-qS-vW4"/>
+                                            <constraint firstAttribute="trailing" secondItem="5WL-27-Ta2" secondAttribute="trailing" id="xgw-U9-OrV"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="textLabel" destination="5WL-27-Ta2" id="WNJ-cL-8At"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ztF-Rm-t3P"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="hj5-Op-h9G"/>
-                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="Tim-AU-qJ3"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="SaE-rR-7jy"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="zrH-Ia-0cI"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XTc-cF-fGw" secondAttribute="bottom" id="20r-uf-VOE"/>
-                            <constraint firstItem="XTc-cF-fGw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5Yd-oJ-bTR"/>
-                            <constraint firstItem="XTc-cF-fGw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="D90-wu-5Sz"/>
-                            <constraint firstAttribute="trailing" secondItem="XTc-cF-fGw" secondAttribute="trailing" id="Xmd-ie-bSJ"/>
+                            <constraint firstAttribute="trailing" secondItem="lGM-UT-hUi" secondAttribute="trailing" id="0DW-A9-6cs"/>
+                            <constraint firstItem="lGM-UT-hUi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7BB-Vw-oGX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lGM-UT-hUi" secondAttribute="bottom" id="CNc-ny-EqL"/>
+                            <constraint firstItem="lGM-UT-hUi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bMH-8P-9XC"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="XTc-cF-fGw" id="9Bc-LZ-4bd"/>
+                        <outlet property="collectionView" destination="lGM-UT-hUi" id="EYr-DJ-d23"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
 </document>

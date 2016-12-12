@@ -1,8 +1,8 @@
 //
-//  Helpers.swift
-//  PrettyCollectionViewWaterfallLayout
+//  Misc.swift
+//  PrettyWaterfallCollectionViewLayout
 //
-//  Created by Oleksii Naboichenko on 12/7/16.
+//  Created by Oleksii Naboichenko on 12/8/16.
 //  Copyright © 2016 Oleksii Naboichenko. All rights reserved.
 //
 
@@ -35,4 +35,3 @@ public extension UIColor {
         return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
     }
 }
-

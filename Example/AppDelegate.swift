@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Example
 //
-//  Created by Oleksii Naboichenko on 12/7/16.
+//  Created by Oleksii Naboichenko on 12/8/16.
 //  Copyright © 2016 Oleksii Naboichenko. All rights reserved.
 //
 

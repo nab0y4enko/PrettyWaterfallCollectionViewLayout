@@ -1,19 +1,19 @@
 //
-//  PrettyCollectionViewWaterfallLayout.swift
-//  PrettyCollectionViewWaterfallLayout
+//  PrettyWaterfallCollectionViewLayout.swift
+//  PrettyWaterfallCollectionViewLayout
 //
-//  Created by Oleksii Naboichenko on 12/7/16.
+//  Created by Oleksii Naboichenko on 12/8/16.
 //  Copyright © 2016 Oleksii Naboichenko. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreGraphics
 
 @objc public protocol PrettyWaterfallCollectionViewLayoutDelegate: UICollectionViewDelegate {
     
     /// Configure Sections
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForItemAt indexPath: IndexPath) -> CGSize
-
+    
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, numberOfColumnsInSection section: Int) -> Int
     
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumColumnSpacingForSectionAt section: Int) -> CGFloat
@@ -21,12 +21,12 @@ import CoreGraphics
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat
     
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForSectionAt section: Int) -> UIEdgeInsets
-
+    
     /// Configure Headers
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
     
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForHeaderAt section: Int) -> UIEdgeInsets
-
+    
     /// Configure Footers
     @objc optional func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
     
@@ -36,32 +36,38 @@ import CoreGraphics
 public let PrettyWaterfallCollectionElementKindSectionHeader = "PrettyWaterfallCollectionElementKindSectionHeader"
 public let PrettyWaterfallCollectionElementKindSectionFooter = "PrettyWaterfallCollectionElementKindSectionFooter"
 
-public enum PrettyWaterfallCollectionViewLayoutItemRenderDirection {
-    case shortestFirst
-    case leftToRight
-    case rightToLeft
+public struct PrettyWaterfallCollectionViewLayoutOptionSet: OptionSet {
+    public var rawValue: Int
+    
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+
+    public static let shortestFirst = PrettyWaterfallCollectionViewLayoutOptionSet(rawValue: 1 << 0)
+    public static let leftToRight = PrettyWaterfallCollectionViewLayoutOptionSet(rawValue: 1 << 1)      //in prior
+    public static let rightToLeft = PrettyWaterfallCollectionViewLayoutOptionSet(rawValue: 1 << 2)
 }
 
 public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Public Properties
-    public var itemRenderDirection: PrettyWaterfallCollectionViewLayoutItemRenderDirection = .leftToRight
+    public var itemRenderDirectionOptions: PrettyWaterfallCollectionViewLayoutOptionSet = []
     
-    public var itemReferenceSize: CGSize = CGSize(width: 1, height: 1)
+    @IBInspectable public var numberOfColumns: Int = 1
     
-    public var numberOfColumns: Int = 1
+    @IBInspectable public var itemReferenceSize: CGSize = CGSize(width: 1, height: 1)
     
-    public var minimumColumnSpacing: CGFloat = 0
+    @IBInspectable public var minimumColumnSpacing: CGFloat = 0
     
-    public var minimumInteritemSpacing: CGFloat = 0
+    @IBInspectable public var minimumInteritemSpacing: CGFloat = 0
     
     public var sectionInsets: UIEdgeInsets = UIEdgeInsets()
-
-    public var headerReferenceSize: CGSize = CGSize()
+    
+    @IBInspectable public var headerReferenceSize: CGSize = CGSize()
     
     public var headerInsets: UIEdgeInsets = UIEdgeInsets()
     
-    public var footerReferenceSize: CGSize = CGSize()
+    @IBInspectable public var footerReferenceSize: CGSize = CGSize()
     
     public var footerInsets: UIEdgeInsets = UIEdgeInsets()
     
@@ -130,6 +136,7 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                 let layoutAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: PrettyWaterfallCollectionElementKindSectionHeader, with: indexPath)
                 layoutAttributes.frame = CGRect(x: insets.left, y: contentHeight + insets.top, width: width, height: headerSize.height)
                 headersLayoutAttributes.append(layoutAttributes)
+                allElementsLayoutAttributes.append(layoutAttributes)
                 
                 //Calculate new content size
                 contentHeight += insets.top + headerSize.height + insets.bottom
@@ -153,7 +160,7 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                     let indexPath = IndexPath(item: item, section: section)
                     
                     //Identify column number for item
-                    let column = self.column(forItemAt: indexPath)
+                    let column = self.column(forItemAt: item, columnHeights: columnHeights, options: itemRenderDirectionOptions)
                     
                     //Add interitem space if need
                     if columnHeights[column] > 0.0 {
@@ -169,7 +176,7 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                     //Calculate height for item
                     let referenceSize = self.referenceSize(forItemAt: indexPath)
                     let height = referenceSize.width > 0 ? floor(referenceSize.height * width / referenceSize.width) : 0.0
-
+                    
                     //Calculate x origin for item
                     let y = columnHeights[column]
                     
@@ -177,6 +184,7 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                     let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     layoutAttributes.frame = CGRect(x: x, y: y, width: width, height: height)
                     itemsLayoutAttributes.append(layoutAttributes)
+                    allElementsLayoutAttributes.append(layoutAttributes)
                     
                     //Increment new height for column
                     columnHeights[column] += height
@@ -203,6 +211,7 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                 let layoutAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: PrettyWaterfallCollectionElementKindSectionFooter, with: indexPath)
                 layoutAttributes.frame = CGRect(x: insets.left, y: contentHeight + insets.top, width: width, height: footerSize.height)
                 footersLayoutAttributes.append(layoutAttributes)
+                allElementsLayoutAttributes.append(layoutAttributes)
                 
                 //Calculate new content size
                 contentHeight += insets.top + footerSize.height + insets.bottom
@@ -264,37 +273,43 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
         return collectionView?.numberOfItems(inSection: section) ?? 0
     }
     
-    private func column(forItemAt indexPath: IndexPath) -> Int {
-        let numberOfColumns = self.numberOfColumns(inSection: indexPath.section)
+    private func column(forItemAt item: Int, columnHeights: [CGFloat], options: PrettyWaterfallCollectionViewLayoutOptionSet) -> Int {
+        let numberOfColumns = columnHeights.count
+        
         guard numberOfColumns > 0 else {
             return 0
         }
         
-        switch itemRenderDirection {
-        case .shortestFirst:
-            // TODO: add code
-            return 0
-        case .leftToRight:
-            return indexPath.item%numberOfColumns
-        case .rightToLeft:
-            return numberOfColumns - 1 - indexPath.item%numberOfColumns
+        if itemRenderDirectionOptions.contains(.shortestFirst) == false {
+            if itemRenderDirectionOptions.contains(.rightToLeft) {
+                return numberOfColumns - 1 - item%numberOfColumns
+            } else {
+                return item%numberOfColumns
+            }
+        } else {
+            //find min height in columns
+            let minHeight = columnHeights.min() ?? 0
+            
+            //find all columns with min height
+            var minHeightIndexes: [Int] = []
+            for columnIndex in 0..<numberOfColumns {
+                if columnHeights[columnIndex] == minHeight {
+                    minHeightIndexes.append(columnIndex)
+                }
+            }
+            
+            if itemRenderDirectionOptions.contains(.rightToLeft) {
+                return minHeightIndexes.last ?? 0
+            } else {
+                return minHeightIndexes.first ?? 0
+            }
         }
     }
-    
 }
 
 extension PrettyWaterfallCollectionViewLayout {
     
     // MARK: - Sections data
-    fileprivate func referenceSize(forItemAt indexPath: IndexPath) -> CGSize {
-        if let collectionView = collectionView, let delegate = delegate {
-            if let itemReferenceSize = delegate.collectionView?(collectionView, layout: self, referenceSizeForItemAt: indexPath) {
-                return itemReferenceSize
-            }
-        }
-        
-        return itemReferenceSize
-    }
     
     fileprivate func numberOfColumns(inSection section: Int) -> Int {
         if let collectionView = collectionView, let delegate = delegate {
@@ -304,6 +319,16 @@ extension PrettyWaterfallCollectionViewLayout {
         }
         
         return numberOfColumns
+    }
+
+    fileprivate func referenceSize(forItemAt indexPath: IndexPath) -> CGSize {
+        if let collectionView = collectionView, let delegate = delegate {
+            if let itemReferenceSize = delegate.collectionView?(collectionView, layout: self, referenceSizeForItemAt: indexPath) {
+                return itemReferenceSize
+            }
+        }
+        
+        return itemReferenceSize
     }
     
     fileprivate func minimumColumnSpacing(forSectionAt section: Int) -> CGFloat {
@@ -325,7 +350,7 @@ extension PrettyWaterfallCollectionViewLayout {
         
         return minimumInteritemSpacing
     }
-
+    
     fileprivate func insets(forSectionAt section: Int) -> UIEdgeInsets {
         if let collectionView = collectionView, let delegate = delegate {
             if let sectionInsets = delegate.collectionView?(collectionView, layout: self, insetsForSectionAt: section) {
@@ -338,7 +363,7 @@ extension PrettyWaterfallCollectionViewLayout {
 }
 
 extension PrettyWaterfallCollectionViewLayout {
-
+    
     // MARK: - Headers data
     fileprivate func referenceSize(forHeaderAt section: Int) -> CGSize {
         if let collectionView = collectionView, let delegate = delegate {
