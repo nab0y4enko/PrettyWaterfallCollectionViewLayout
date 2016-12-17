@@ -153,7 +153,7 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                 let minimumInteritemSpacing = self.minimumInteritemSpacing(forSectionAt: section)
                 
                 ///Array of height values for each column
-                var columnHeights = Array(repeating: contentHeight + sectionInsets.top, count: numberOfColumns)
+                var columnHeights = Array(repeating: CGFloat(0), count: numberOfColumns)
                 
                 for item in 0..<numberOfItems {
                     //indexPath for item
@@ -168,17 +168,17 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                     }
                     
                     //Calculate width for item
-                    let width = floor((sectionWidth - (CGFloat(numberOfSpacesBetweenColumns) * minimumColumnSpacing)) / CGFloat(numberOfColumns))
+                    let width = (sectionWidth - (CGFloat(numberOfSpacesBetweenColumns) * minimumColumnSpacing)) / CGFloat(numberOfColumns)
                     
                     //Calculate x origin for item
                     let x = sectionInsets.left + (width + minimumColumnSpacing) * CGFloat(column)
                     
                     //Calculate height for item
                     let referenceSize = self.referenceSize(forItemAt: indexPath)
-                    let height = referenceSize.width > 0 ? floor(referenceSize.height * width / referenceSize.width) : 0.0
+                    let height = referenceSize.width > 0 ? referenceSize.height * width / referenceSize.width : 0.0
                     
                     //Calculate x origin for item
-                    let y = columnHeights[column]
+                    let y = contentHeight + sectionInsets.top + columnHeights[column]
                     
                     //Save item layout attributes
                     let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
