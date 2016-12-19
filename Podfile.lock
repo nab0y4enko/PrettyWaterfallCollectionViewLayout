@@ -1,0 +1,22 @@
+PODS:
+  - PrettyExtensionsKit (0.1)
+
+DEPENDENCIES:
+  - PrettyExtensionsKit (from `https://github.com/nab0y4enko/PrettyExtensionsKit.git`, branch `develop`)
+
+EXTERNAL SOURCES:
+  PrettyExtensionsKit:
+    :branch: develop
+    :git: https://github.com/nab0y4enko/PrettyExtensionsKit.git
+
+CHECKOUT OPTIONS:
+  PrettyExtensionsKit:
+    :commit: c713a1e59d114997d552532a2b1534628399f6de
+    :git: https://github.com/nab0y4enko/PrettyExtensionsKit.git
+
+SPEC CHECKSUMS:
+  PrettyExtensionsKit: 319b90d996876351126a97213ff1f329db7ca4f1
+
+PODFILE CHECKSUM: ef1af8366a35c65a51a321f48c9d85e1ca38cc36
+
+COCOAPODS: 1.2.0.beta.1

@@ -90,6 +90,8 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
     ///Calculated content size
     private var contentSize: CGSize?
     
+    
+    
     // MARK: - Deinitializer
     deinit {
         clearCalculatedInfo()
@@ -143,11 +145,11 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
             }
             
             // Calculate attributes for section
+            let sectionInsets = self.insets(forSectionAt: section)
             let numberOfItems = self.numberOfItems(inSection: section)
-            if numberOfItems > 0 {
-                let sectionInsets = self.insets(forSectionAt: section)
+            let numberOfColumns = self.numberOfColumns(inSection: section)
+            if numberOfItems > 0, numberOfColumns > 0 {
                 let sectionWidth = max(collectionView.bounds.size.width - sectionInsets.left - sectionInsets.right, 0)
-                let numberOfColumns = self.numberOfColumns(inSection: section)
                 let numberOfSpacesBetweenColumns = max(numberOfColumns - 1, 0)
                 let minimumColumnSpacing = self.minimumColumnSpacing(forSectionAt: section)
                 let minimumInteritemSpacing = self.minimumInteritemSpacing(forSectionAt: section)
@@ -194,6 +196,8 @@ public final class PrettyWaterfallCollectionViewLayout: UICollectionViewLayout {
                 if let maxColumnHeight = columnHeights.max() {
                     contentHeight += sectionInsets.top + maxColumnHeight + sectionInsets.bottom
                 }
+            } else {
+                contentHeight += sectionInsets.top + sectionInsets.bottom
             }
             
             /// Calculate attributes for footer
