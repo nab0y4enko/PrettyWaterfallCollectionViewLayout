@@ -1,0 +1,17 @@
+PODS:
+  - PrettyExtensionsKit/CoreGraphics (0.2.1):
+    - PrettyExtensionsKit/SwiftCore
+  - PrettyExtensionsKit/SwiftCore (0.2.1)
+  - PrettyExtensionsKit/UIKit (0.2.1):
+    - PrettyExtensionsKit/CoreGraphics
+    - PrettyExtensionsKit/SwiftCore
+
+DEPENDENCIES:
+  - PrettyExtensionsKit/UIKit
+
+SPEC CHECKSUMS:
+  PrettyExtensionsKit: cbbcdf59fa942fb855ec8676930d20cbadfbb31d
+
+PODFILE CHECKSUM: a6c702e59f369e688b00aa01da9078bd49776c7c
+
+COCOAPODS: 1.3.1
