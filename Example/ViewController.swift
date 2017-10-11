@@ -10,7 +10,8 @@ import UIKit
 import PrettyWaterfallCollectionViewLayout
 import PrettyExtensionsKit
 
-class Item {
+// MARK: - Item
+final class Item {
     // MARK: - Public Properties
     let size: CGSize
     let color: UIColor
@@ -21,10 +22,11 @@ class Item {
     }
 }
 
-class Section {
+// MARK: - Section
+final class Section {
     
     // MARK: - Public Properties
-    var numberOfColumns: Int = Int.random(1...4)
+    var numberOfColumns: Int = Int.random(2...4)
     var headerColor: UIColor = UIColor.random
     var items: [Item] = {
         var items: [Item] = []
@@ -36,17 +38,18 @@ class Section {
     var footerColor: UIColor = UIColor.random
 }
 
-class ViewController: UIViewController {
+// MARK: - ViewController
+final class ViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             //Register Headers and Footers nibs
             let headerNib = UINib(nibName: "ExampleHeaderCollectionReusableView", bundle: nil)
-            collectionView.register(headerNib, forSupplementaryViewOfKind: PrettyWaterfallCollectionElementKindSectionHeader, withReuseIdentifier: "ExampleHeader")
+            collectionView.register(headerNib, forSupplementaryViewOfKind: PrettyWaterfallCollectionViewLayout.ElementKind.sectionHeader, withReuseIdentifier: "ExampleHeader")
             
             let footerNib = UINib(nibName: "ExampleFooterCollectionReusableView", bundle: nil)
-            collectionView.register(footerNib, forSupplementaryViewOfKind: PrettyWaterfallCollectionElementKindSectionFooter, withReuseIdentifier: "ExampleFooter")
+            collectionView.register(footerNib, forSupplementaryViewOfKind: PrettyWaterfallCollectionViewLayout.ElementKind.sectionFooter, withReuseIdentifier: "ExampleFooter")
         }
     }
     
@@ -80,9 +83,9 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case PrettyWaterfallCollectionElementKindSectionHeader:
+        case PrettyWaterfallCollectionViewLayout.ElementKind.sectionHeader:
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ExampleHeader", for: indexPath)
-        case PrettyWaterfallCollectionElementKindSectionFooter:
+        case PrettyWaterfallCollectionViewLayout.ElementKind.sectionFooter:
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ExampleFooter", for: indexPath)
         default:
             return UICollectionReusableView()
@@ -92,32 +95,37 @@ extension ViewController: UICollectionViewDataSource {
 
 // MARK: - PrettyWaterfallCollectionViewLayoutDelegate
 extension ViewController: PrettyWaterfallCollectionViewLayoutDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, referenceSizeForItemAt indexPath: IndexPath) -> CGSize {
         return dataSource[indexPath.section].items[indexPath.row].size
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, numberOfColumnsInSection section: Int) -> Int {
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, numberOfColumnsInSection section: Int) -> Int {
         return dataSource[section].numberOfColumns
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumColumnSpacingForSectionAt section: Int) -> CGFloat {
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, columnSpacingForSection section: Int) -> CGFloat {
         return 20.0
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, interitemSpacingForSection section: Int) -> CGFloat {
         return 8.0
+
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForSectionAt section: Int) -> UIEdgeInsets {
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, insetsForSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 30, height: 30)
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, headerHeightForSection section: Int) -> CGFloat {
+        return 30
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: 30, height: 30)
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, footerHeightForSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    func prettyWaterfallCollectionViewLayout(_ prettyWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout, didCalculate contentSize: CGSize) {
+        print("contentSize: \(contentSize)")
     }
 }

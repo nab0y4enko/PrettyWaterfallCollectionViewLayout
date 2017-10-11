@@ -8,6 +8,5 @@
 
 import UIKit
 
-class ExampleHeaderCollectionReusableView: UICollectionReusableView {
-    
+final class ExampleHeaderCollectionReusableView: UICollectionReusableView {
 }

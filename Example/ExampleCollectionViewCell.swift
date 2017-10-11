@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExampleCollectionViewCell: UICollectionViewCell {
+final class ExampleCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
     @IBOutlet weak var textLabel: UILabel!
