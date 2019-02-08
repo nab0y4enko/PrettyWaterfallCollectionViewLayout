@@ -1,5 +1,5 @@
 //
-//  ExampleFooterCollectionReusableView.swift
+//  ExampleFooterOrTrailerCollectionReusableView.swift
 //  PrettyWaterfallCollectionViewLayout
 //
 //  Created by Oleksii Naboichenko on 12/19/16.
@@ -8,5 +8,5 @@
 
 import UIKit
 
-final class ExampleFooterCollectionReusableView: UICollectionReusableView {
+final class ExampleFooterOrTrailerCollectionReusableView: UICollectionReusableView {
 }

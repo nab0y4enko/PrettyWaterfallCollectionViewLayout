@@ -1,5 +1,5 @@
 //
-//  ExampleHeaderCollectionReusableView.swift
+//  ExampleHeaderOrLeaderCollectionReusableView.swift
 //  PrettyWaterfallCollectionViewLayout
 //
 //  Created by Oleksii Naboichenko on 12/19/16.
@@ -8,5 +8,5 @@
 
 import UIKit
 
-final class ExampleHeaderCollectionReusableView: UICollectionReusableView {
+final class ExampleHeaderOrLeaderCollectionReusableView: UICollectionReusableView {
 }

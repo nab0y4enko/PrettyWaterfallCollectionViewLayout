@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name              = "PrettyWaterfallCollectionViewLayout"
     s.module_name       = "PrettyWaterfallCollectionViewLayout"
-    s.version           = "0.1.0"
+    s.version           = "0.2.0"
     s.summary           = "A pretty vertical layout."
     s.description       = "A pretty vertical layout with the ability to configure the number of column, based on Swift."
     s.homepage          = "https://github.com/nab0y4enko/PrettyWaterfallCollectionViewLayout"
@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
 
     s.ios.deployment_target = '10.0'
 
-    s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
+    s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
 end
