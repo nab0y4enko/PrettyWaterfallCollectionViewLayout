@@ -21,7 +21,7 @@ final class VerticalLayoutViewController: UIViewController {
         let color: UIColor
         
         init() {
-            size = CGSize(width: CGFloat.random(1...5), height: CGFloat.random(1...5))
+            size = CGSize(width: CGFloat.random(in: 2...5), height: CGFloat.random(in: 2...5))
             color = UIColor.random
         }
     }
@@ -30,7 +30,7 @@ final class VerticalLayoutViewController: UIViewController {
     final class Section {
         
         // MARK: - Public Properties
-        var numberOfColumns: Int = Int.random(2...4)
+        var numberOfColumns: Int = Int.random(in: 2...4)
         var headerColor: UIColor = UIColor.random
         var items: [Item] = {
             var items: [Item] = []
@@ -95,43 +95,43 @@ extension VerticalLayoutViewController: UICollectionViewDataSource {
 }
 
 // MARK: - VerticalLayoutViewController + PrettyHorizontalWaterfallCollectionViewLayoutDelegate
-extension VerticalLayoutViewController: PrettyWaterfallCollectionViewLayoutDelegate {
+extension VerticalLayoutViewController: PrettyVerticalWaterfallCollectionViewLayoutDelegate {
     
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, referenceSizeForItemAt indexPath: IndexPath) -> CGSize {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, referenceSizeForItemAt indexPath: IndexPath) -> CGSize {
         return dataSource[indexPath.section].items[indexPath.row].size
     }
     
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, numberOfColumnsInSection section: Int) -> Int {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, numberOfColumnsInSection section: Int) -> Int {
         return dataSource[section].numberOfColumns
     }
     
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, spacingBetweenRowsInSection section: Int) -> CGFloat {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, spacingBetweenRowsInSection section: Int) -> CGFloat {
         return 10
     }
     
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, spacingBetweenColumnsInSection section: Int) -> CGFloat {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, spacingBetweenColumnsInSection section: Int) -> CGFloat {
         return 10
     }
     
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, insetsForSection section: Int) -> UIEdgeInsets {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, insetsForSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     /// Configure Headers
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, heightForHeaderInSection section: Int) -> CGFloat {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
     
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, insetsForHeaderInSection section: Int) -> UIEdgeInsets {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, insetsForHeaderInSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     /// Configure Footers
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, heightForFooterInSection section: Int) -> CGFloat {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, heightForFooterInSection section: Int) -> CGFloat {
         return 40
     }
     
-    func prettyWaterfallCollectionViewLayout(_ layout: PrettyWaterfallCollectionViewLayout, insetsForFooterInSection section: Int) -> UIEdgeInsets {
+    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, insetsForFooterInSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 }

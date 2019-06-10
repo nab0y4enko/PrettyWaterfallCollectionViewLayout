@@ -1,20 +1,31 @@
-Pod::Spec.new do |s|
-    s.name              = "PrettyWaterfallCollectionViewLayout"
-    s.module_name       = "PrettyWaterfallCollectionViewLayout"
-    s.version           = "0.2.0"
-    s.summary           = "A pretty vertical layout."
-    s.description       = "A pretty vertical layout with the ability to configure the number of column, based on Swift."
-    s.homepage          = "https://github.com/nab0y4enko/PrettyWaterfallCollectionViewLayout"
-    s.license           = 'MIT'
-    s.author            = { "Oleksii Naboichenko" => "nab0y4enko@gmail.com" }
-    s.social_media_url  = "https://twitter.com/nab0y4enko"
+Pod::Spec.new do |spec|
+    spec.name              = "PrettyWaterfallCollectionViewLayout"
+    spec.module_name       = "PrettyWaterfallCollectionViewLayout"
+    spec.version           = "0.3.0"
+    spec.summary           = "A pretty layouts."
+    spec.description       = "A pretty layouts with the ability to configure the number of column/row, based on Swift."
+    spec.homepage          = "https://github.com/nab0y4enko/PrettyWaterfallCollectionViewLayout"
+    spec.license           = 'MIT'
+    spec.author            = { "Oleksii Naboichenko" => "nab0y4enko@gmail.com" }
+    spec.social_media_url  = "https://twitter.com/nab0y4enko"
    
-    s.source            = { :git => "https://github.com/nab0y4enko/PrettyWaterfallCollectionViewLayout.git", :tag => "#{s.version}" }
-    s.source_files      = "Sources/**/*.swift"
+    spec.source            = { :git => "https://github.com/nab0y4enko/PrettyWaterfallCollectionViewLayout.git", :tag => "#{spec.version}" }
 
-    s.frameworks        = "UIKit"
+    spec.frameworks        = "UIKit"
 
-    s.ios.deployment_target = '10.0'
+    spec.ios.deployment_target = '10.0'
 
-    s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
+    spec.swift_versions = ['4.0', '4.2', '5.0']
+
+    spec.default_subspecs = 'VerticalWaterfall', 'HorizontalWaterfall'
+
+    spec.subspec 'VerticalWaterfall' do |subspec|
+        subspec.ios.frameworks = 'UIKit'
+        subspec.source_files = 'Sources/VerticalWaterfall/*'
+    end
+
+    spec.subspec 'HorizontalWaterfall' do |subspec|
+        subspec.source_files = 'Sources/HorizontalWaterfall/*'
+    end
+
 end

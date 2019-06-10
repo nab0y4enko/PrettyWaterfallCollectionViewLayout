@@ -1,9 +1,6 @@
 PODS:
-  - PrettyExtensionsKit/CoreGraphics (0.3.1):
-    - PrettyExtensionsKit/SwiftCore
-  - PrettyExtensionsKit/SwiftCore (0.3.1)
-  - PrettyExtensionsKit/UIKit (0.3.1):
-    - PrettyExtensionsKit/CoreGraphics
+  - PrettyExtensionsKit/SwiftCore (0.4.0)
+  - PrettyExtensionsKit/UIKit (0.4.0):
     - PrettyExtensionsKit/SwiftCore
 
 DEPENDENCIES:
@@ -14,8 +11,8 @@ SPEC REPOS:
     - PrettyExtensionsKit
 
 SPEC CHECKSUMS:
-  PrettyExtensionsKit: 0daa73fde17d7131a4d165a8dfab4001806cde9a
+  PrettyExtensionsKit: cd883bfadb28ac9f6f5f43432cd97b44a590f296
 
 PODFILE CHECKSUM: a6c702e59f369e688b00aa01da9078bd49776c7c
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.1

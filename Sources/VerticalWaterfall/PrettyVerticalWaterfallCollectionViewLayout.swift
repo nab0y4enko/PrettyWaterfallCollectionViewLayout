@@ -9,8 +9,13 @@
 import UIKit
 
 // MARK: - PrettyVerticalWaterfallCollectionViewLayout
-open class PrettyVerticalWaterfallCollectionViewLayout: PrettyWaterfallCollectionViewLayout {
+open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
 
+    public struct ElementKind {
+        public static let sectionHeader = "PrettyWaterfallCollectionViewLayoutElementKindSectionHeader"
+        public static let sectionFooter = "PrettyWaterfallCollectionViewLayoutElementKindSectionFooter"
+    }
+    
     // MARK: - RenderDirection
     public struct RenderDirection: OptionSet {
         public var rawValue: Int
@@ -27,10 +32,69 @@ open class PrettyVerticalWaterfallCollectionViewLayout: PrettyWaterfallCollectio
     // MARK: - Public Properties
     public var renderDirection: RenderDirection = [.leftToRight]
 
+    @IBInspectable public var itemReferenceSize: CGSize = CGSize(width: 1, height: 1)
+        
+    @IBInspectable public var numberOfColumns: Int = 1
+    
+    @IBInspectable public var rowSpacing: CGFloat = 0
+    
+    @IBInspectable public var columnSpacing: CGFloat = 0
+    
+    public var sectionInsets: UIEdgeInsets = UIEdgeInsets()
+    
+    @IBInspectable public var headerHeight: CGFloat = 0
+    
+    public var headerInsets: UIEdgeInsets = UIEdgeInsets()
+    
+    @IBInspectable public var footerHeight: CGFloat = 0
+    
+    public var footerInsets: UIEdgeInsets = UIEdgeInsets()
+    
+    var contentSize: CGSize = CGSize() {
+        didSet {
+            if contentSize != oldValue {
+                delegate?.prettyWaterfallCollectionViewLayoutDelegate?(self, finishCalculateContentSize: contentSize)
+            }
+        }
+    }
+    
+    // MARK: - Private Properties
+    var delegate: PrettyVerticalWaterfallCollectionViewLayoutDelegate? {
+        return collectionView?.delegate as? PrettyVerticalWaterfallCollectionViewLayoutDelegate
+    }
+    
+    private var allElementsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+    private var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+    private var headersLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+    private var footersLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+    
+    // MARK: - Deinitializer
+    deinit {
+        cleanCalculatedInfo()
+    }
+    
     // MARK: - UICollectionViewLayout methods overriding
+    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return collectionView?.bounds.width != newBounds.width
+    }
+    
+    open override func invalidateLayout() {
+        super.invalidateLayout()
+        
+        cleanCalculatedInfo()
+    }
+    
+    open override func invalidateLayout(with context: UICollectionViewLayoutInvalidationContext) {
+        super.invalidateLayout(with: context)
+        
+        cleanCalculatedInfo()
+    }
+    
     open override func prepare() {
         super.prepare()
 
+        cleanCalculatedInfo()
+        
         guard let collectionViewSize = collectionView?.bounds.size, collectionViewSize.width > 0, collectionViewSize.height > 0 else {
             return
         }
@@ -148,15 +212,68 @@ open class PrettyVerticalWaterfallCollectionViewLayout: PrettyWaterfallCollectio
         contentSize = CGSize(width: collectionViewSize.width, height: contentHeight)
     }
 
-    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        if let oldWidth = collectionView?.bounds.width {
-            return oldWidth != newBounds.width
-        }
-
-        return false
+    open override var collectionViewContentSize: CGSize {
+        return contentSize
     }
-   
-    // MARK: - Private Instance Methods
+    
+    open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return allElementsLayoutAttributes.filter {
+            $0.frame.intersects(rect)
+        }
+    }
+    
+    open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return itemsLayoutAttributes.first {
+            $0.indexPath == indexPath
+        }
+    }
+    
+    open override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        switch elementKind {
+        case ElementKind.sectionHeader:
+            return headersLayoutAttributes[indexPath.section]
+        case ElementKind.sectionFooter:
+            return footersLayoutAttributes[indexPath.section]
+        default:
+            print("Indefinite name of kind")
+            return nil
+        }
+    }
+    
+    // MARK: - Private Methods
+    private func cleanCalculatedInfo() {
+        allElementsLayoutAttributes.removeAll()
+        itemsLayoutAttributes.removeAll()
+        headersLayoutAttributes.removeAll()
+        footersLayoutAttributes.removeAll()
+        contentSize = .zero
+    }
+    
+    /// Sections data
+    private func insets(forSection section: Int) -> UIEdgeInsets {
+        return delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForSection: section) ?? sectionInsets
+    }
+    
+    private func numberOfItems(inSection section: Int) -> Int {
+        return collectionView?.numberOfItems(inSection: section) ?? 0
+    }
+    
+    private func numberOfColumns(inSection section: Int) -> Int {
+        return delegate?.prettyWaterfallCollectionViewLayout?(self, numberOfColumnsInSection: section) ?? numberOfColumns
+    }
+    
+    private func rowSpacing(forSection section: Int) -> CGFloat {
+        return delegate?.prettyWaterfallCollectionViewLayout?(self, spacingBetweenRowsInSection: section) ?? rowSpacing
+    }
+    
+    private func columnSpacing(forSection section: Int) -> CGFloat {
+        return delegate?.prettyWaterfallCollectionViewLayout?(self, spacingBetweenColumnsInSection: section) ?? columnSpacing
+    }
+    
+    private func referenceSize(forItemAt indexPath: IndexPath) -> CGSize {
+        return delegate?.prettyWaterfallCollectionViewLayout?(self, referenceSizeForItemAt: indexPath) ?? itemReferenceSize
+    }
+    
     private func column(forItem item: Int, columnHeights: [CGFloat], renderDirection: RenderDirection) -> Int {
         let numberOfColumns = columnHeights.count
 
@@ -189,4 +306,39 @@ open class PrettyVerticalWaterfallCollectionViewLayout: PrettyWaterfallCollectio
             }
         }
     }
+    
+    /// Headers data
+    private func heightForHeaderInSection(_ section: Int) -> CGFloat {
+        if let headerHeight = delegate?.prettyWaterfallCollectionViewLayout?(self, heightForHeaderInSection: section) {
+            return headerHeight
+        }
+        
+        return headerHeight
+    }
+    
+    private func insetsForHeaderInSection(_ section: Int) -> UIEdgeInsets {
+        if let headerInsets = delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForHeaderInSection: section) {
+            return headerInsets
+        }
+        
+        return headerInsets
+    }
+    
+    /// Footers data
+    private func heightForFooterInSection(_ section: Int) -> CGFloat {
+        if let footerHeight = delegate?.prettyWaterfallCollectionViewLayout?(self, heightForFooterInSection: section) {
+            return footerHeight
+        }
+        
+        return footerHeight
+    }
+    
+    private func footerForHeaderInSection(_ section: Int) -> UIEdgeInsets {
+        if let footerInsets = delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForFooterInSection: section) {
+            return footerInsets
+        }
+        
+        return footerInsets
+    }
+    
 }

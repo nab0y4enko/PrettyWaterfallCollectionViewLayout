@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1B27D0A51E07FB0C008EA305 /* PrettyWaterfallCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B27D0A21E07FB0C008EA305 /* PrettyWaterfallCollectionViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1B27D0B11E084251008EA305 /* PrettyVerticalWaterfallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27D0A31E07FB0C008EA305 /* PrettyVerticalWaterfallCollectionViewLayout.swift */; };
+		1B414CBA22AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B414CB522AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayout.swift */; };
+		1B414CBB22AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B414CB622AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayoutDelegate.swift */; };
+		1B414CBC22AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B414CB822AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayout.swift */; };
+		1B414CBD22AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B414CB922AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayoutDelegate.swift */; };
 		1B7B401B1DF9DD8C00ADDA47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7B401A1DF9DD8C00ADDA47 /* AppDelegate.swift */; };
 		1B7B40201DF9DD8C00ADDA47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7B401E1DF9DD8C00ADDA47 /* Main.storyboard */; };
 		1B7B40221DF9DD8C00ADDA47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7B40211DF9DD8C00ADDA47 /* Assets.xcassets */; };
@@ -22,10 +25,7 @@
 		1B8D7D86220C9C1200CEB05E /* ExampleFooterOrTrailerCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B8D7D81220C9C1200CEB05E /* ExampleFooterOrTrailerCollectionReusableView.xib */; };
 		1B8D7D87220C9C1200CEB05E /* ExampleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D7D82220C9C1200CEB05E /* ExampleCollectionViewCell.swift */; };
 		1B8D7D88220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B8D7D83220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.xib */; };
-		1B8D7D8A220D8ED100CEB05E /* PrettyWaterfallCollectionViewLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D7D89220D8ED100CEB05E /* PrettyWaterfallCollectionViewLayoutDelegate.swift */; };
-		1B8D7D8C220D8F7C00CEB05E /* PrettyWaterfallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D7D8B220D8F7C00CEB05E /* PrettyWaterfallCollectionViewLayout.swift */; };
-		1B8D7D8D220DA6D900CEB05E /* PrettyHorizontalWaterfallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8D7D79220C915A00CEB05E /* PrettyHorizontalWaterfallCollectionViewLayout.swift */; };
-		BD78495AB5E3894B1868825B /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B47C1CA5FFD4E01859240 /* Pods_Example.framework */; };
+		F2314502EDECFFEB6BE154B5 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3680D3C603592D66F3AADD8D /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,10 @@
 		1B21D3CA1F8E669200E31DA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1B27D0A11E07FB0C008EA305 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B27D0A21E07FB0C008EA305 /* PrettyWaterfallCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyWaterfallCollectionViewLayout.h; sourceTree = "<group>"; };
-		1B27D0A31E07FB0C008EA305 /* PrettyVerticalWaterfallCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyVerticalWaterfallCollectionViewLayout.swift; sourceTree = "<group>"; };
+		1B414CB522AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyVerticalWaterfallCollectionViewLayout.swift; sourceTree = "<group>"; };
+		1B414CB622AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyVerticalWaterfallCollectionViewLayoutDelegate.swift; sourceTree = "<group>"; };
+		1B414CB822AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyHorizontalWaterfallCollectionViewLayout.swift; sourceTree = "<group>"; };
+		1B414CB922AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyHorizontalWaterfallCollectionViewLayoutDelegate.swift; sourceTree = "<group>"; };
 		1B7B40071DF9DD4700ADDA47 /* PrettyWaterfallCollectionViewLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PrettyWaterfallCollectionViewLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7B40181DF9DD8C00ADDA47 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7B401A1DF9DD8C00ADDA47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,18 +68,15 @@
 		1B7B40241DF9DD8C00ADDA47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B7B40261DF9DD8C00ADDA47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B8D7D71220C8F1800CEB05E /* VerticalLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalLayoutViewController.swift; sourceTree = "<group>"; };
-		1B8D7D79220C915A00CEB05E /* PrettyHorizontalWaterfallCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyHorizontalWaterfallCollectionViewLayout.swift; sourceTree = "<group>"; };
 		1B8D7D7C220C974B00CEB05E /* HorizontalLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLayoutViewController.swift; sourceTree = "<group>"; };
 		1B8D7D7F220C9C1200CEB05E /* ExampleFooterOrTrailerCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleFooterOrTrailerCollectionReusableView.swift; sourceTree = "<group>"; };
 		1B8D7D80220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleHeaderOrLeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		1B8D7D81220C9C1200CEB05E /* ExampleFooterOrTrailerCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleFooterOrTrailerCollectionReusableView.xib; sourceTree = "<group>"; };
 		1B8D7D82220C9C1200CEB05E /* ExampleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B8D7D83220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleHeaderOrLeaderCollectionReusableView.xib; sourceTree = "<group>"; };
-		1B8D7D89220D8ED100CEB05E /* PrettyWaterfallCollectionViewLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyWaterfallCollectionViewLayoutDelegate.swift; sourceTree = "<group>"; };
-		1B8D7D8B220D8F7C00CEB05E /* PrettyWaterfallCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyWaterfallCollectionViewLayout.swift; sourceTree = "<group>"; };
-		60DCC337821CF919A23E35E5 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		7D5541EC85953352012ADDA0 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		840B47C1CA5FFD4E01859240 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3680D3C603592D66F3AADD8D /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EB7120E449BB156C98C0B15 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F2A5CE42892426DA6A359DA5 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,24 +92,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B7B402A1DF9DDBA00ADDA47 /* PrettyWaterfallCollectionViewLayout.framework in Frameworks */,
-				BD78495AB5E3894B1868825B /* Pods_Example.framework in Frameworks */,
+				F2314502EDECFFEB6BE154B5 /* Pods_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04B6956D29D35C783618592D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3680D3C603592D66F3AADD8D /* Pods_Example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1B27D0A01E07FB0C008EA305 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1B414CB722AE58F1005D19C5 /* HorizontalWaterfall */,
+				1B414CB422AE58F1005D19C5 /* VerticalWaterfall */,
 				1B27D0A21E07FB0C008EA305 /* PrettyWaterfallCollectionViewLayout.h */,
-				1B8D7D89220D8ED100CEB05E /* PrettyWaterfallCollectionViewLayoutDelegate.swift */,
-				1B8D7D8B220D8F7C00CEB05E /* PrettyWaterfallCollectionViewLayout.swift */,
-				1B27D0A31E07FB0C008EA305 /* PrettyVerticalWaterfallCollectionViewLayout.swift */,
-				1B8D7D79220C915A00CEB05E /* PrettyHorizontalWaterfallCollectionViewLayout.swift */,
 				1B27D0A11E07FB0C008EA305 /* Info.plist */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		1B414CB422AE58F1005D19C5 /* VerticalWaterfall */ = {
+			isa = PBXGroup;
+			children = (
+				1B414CB522AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayout.swift */,
+				1B414CB622AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayoutDelegate.swift */,
+			);
+			path = VerticalWaterfall;
+			sourceTree = "<group>";
+		};
+		1B414CB722AE58F1005D19C5 /* HorizontalWaterfall */ = {
+			isa = PBXGroup;
+			children = (
+				1B414CB822AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayout.swift */,
+				1B414CB922AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayoutDelegate.swift */,
+			);
+			path = HorizontalWaterfall;
 			sourceTree = "<group>";
 		};
 		1B7B3FFD1DF9DD4700ADDA47 = {
@@ -119,8 +143,8 @@
 				1B27D0A01E07FB0C008EA305 /* Sources */,
 				1B7B40191DF9DD8C00ADDA47 /* Example */,
 				1B7B40081DF9DD4700ADDA47 /* Products */,
-				B29AA21B7BC880A8B3CAE6E3 /* Pods */,
-				B67499E6F6FE78D7A6CD806C /* Frameworks */,
+				F38C23D494CD54B4326D8AEE /* Pods */,
+				04B6956D29D35C783618592D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,8 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				1B8D7D7E220C9C1200CEB05E /* Common */,
-				1B8D7D7B220C971200CEB05E /* Horizontal */,
-				1B8D7D6C220C8F1800CEB05E /* Vertical */,
+				1B8D7D7B220C971200CEB05E /* HorizontalWaterfall */,
+				1B8D7D6C220C8F1800CEB05E /* VerticalWaterfall */,
 				1B7B401A1DF9DD8C00ADDA47 /* AppDelegate.swift */,
 				1B7B401E1DF9DD8C00ADDA47 /* Main.storyboard */,
 				1B7B40231DF9DD8C00ADDA47 /* LaunchScreen.storyboard */,
@@ -148,49 +172,42 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		1B8D7D6C220C8F1800CEB05E /* Vertical */ = {
+		1B8D7D6C220C8F1800CEB05E /* VerticalWaterfall */ = {
 			isa = PBXGroup;
 			children = (
 				1B8D7D71220C8F1800CEB05E /* VerticalLayoutViewController.swift */,
 			);
-			path = Vertical;
+			path = VerticalWaterfall;
 			sourceTree = "<group>";
 		};
-		1B8D7D7B220C971200CEB05E /* Horizontal */ = {
+		1B8D7D7B220C971200CEB05E /* HorizontalWaterfall */ = {
 			isa = PBXGroup;
 			children = (
 				1B8D7D7C220C974B00CEB05E /* HorizontalLayoutViewController.swift */,
 			);
-			path = Horizontal;
+			path = HorizontalWaterfall;
 			sourceTree = "<group>";
 		};
 		1B8D7D7E220C9C1200CEB05E /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				1B8D7D7F220C9C1200CEB05E /* ExampleFooterOrTrailerCollectionReusableView.swift */,
-				1B8D7D80220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.swift */,
 				1B8D7D81220C9C1200CEB05E /* ExampleFooterOrTrailerCollectionReusableView.xib */,
+				1B8D7D80220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.swift */,
 				1B8D7D82220C9C1200CEB05E /* ExampleCollectionViewCell.swift */,
 				1B8D7D83220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		B29AA21B7BC880A8B3CAE6E3 /* Pods */ = {
+		F38C23D494CD54B4326D8AEE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7D5541EC85953352012ADDA0 /* Pods-Example.debug.xcconfig */,
-				60DCC337821CF919A23E35E5 /* Pods-Example.release.xcconfig */,
+				3EB7120E449BB156C98C0B15 /* Pods-Example.debug.xcconfig */,
+				F2A5CE42892426DA6A359DA5 /* Pods-Example.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		B67499E6F6FE78D7A6CD806C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				840B47C1CA5FFD4E01859240 /* Pods_Example.framework */,
-			);
-			name = Frameworks;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,12 +246,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B7B40271DF9DD8C00ADDA47 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
-				E6653033BB0842D0C80804AD /* [CP] Check Pods Manifest.lock */,
+				8F54577DDB195529842EBE9F /* [CP] Check Pods Manifest.lock */,
 				1B7B40141DF9DD8C00ADDA47 /* Sources */,
 				1B7B40151DF9DD8C00ADDA47 /* Frameworks */,
 				1B7B40161DF9DD8C00ADDA47 /* Resources */,
 				1B7B402E1DF9DDBA00ADDA47 /* Embed Frameworks */,
-				AF77314E70A242DCB0AA8981 /* [CP] Embed Pods Frameworks */,
+				447B79BD5F6E353CE3404AF3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,23 +270,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Oleksii Naboichenko";
 				TargetAttributes = {
 					1B7B40061DF9DD4700ADDA47 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
 					1B7B40171DF9DD8C00ADDA47 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 1B7B40011DF9DD4700ADDA47 /* Build configuration list for PBXProject "PrettyWaterfallCollectionViewLayout" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -309,13 +327,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AF77314E70A242DCB0AA8981 /* [CP] Embed Pods Frameworks */ = {
+		447B79BD5F6E353CE3404AF3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PrettyExtensionsKit/PrettyExtensionsKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -324,19 +342,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E6653033BB0842D0C80804AD /* [CP] Check Pods Manifest.lock */ = {
+		8F54577DDB195529842EBE9F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
 			);
@@ -352,10 +374,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B8D7D8A220D8ED100CEB05E /* PrettyWaterfallCollectionViewLayoutDelegate.swift in Sources */,
-				1B8D7D8C220D8F7C00CEB05E /* PrettyWaterfallCollectionViewLayout.swift in Sources */,
-				1B27D0B11E084251008EA305 /* PrettyVerticalWaterfallCollectionViewLayout.swift in Sources */,
-				1B8D7D8D220DA6D900CEB05E /* PrettyHorizontalWaterfallCollectionViewLayout.swift in Sources */,
+				1B414CBB22AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayoutDelegate.swift in Sources */,
+				1B414CBC22AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayout.swift in Sources */,
+				1B414CBD22AE58F1005D19C5 /* PrettyHorizontalWaterfallCollectionViewLayoutDelegate.swift in Sources */,
+				1B414CBA22AE58F1005D19C5 /* PrettyVerticalWaterfallCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -468,6 +491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -537,8 +561,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -559,14 +582,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nab0y4enko.PrettyWaterfallCollectionViewLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		1B7B40281DF9DD8C00ADDA47 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D5541EC85953352012ADDA0 /* Pods-Example.debug.xcconfig */;
+			baseConfigurationReference = 3EB7120E449BB156C98C0B15 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -576,13 +598,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nab0y4enko.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		1B7B40291DF9DD8C00ADDA47 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60DCC337821CF919A23E35E5 /* Pods-Example.release.xcconfig */;
+			baseConfigurationReference = F2A5CE42892426DA6A359DA5 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -592,7 +614,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nab0y4enko.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
