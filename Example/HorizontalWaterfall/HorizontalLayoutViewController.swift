@@ -98,46 +98,46 @@ extension HorizontalLayoutViewController: UICollectionViewDataSource {
 // MARK: - HorizontalLayoutViewController + PrettyHorizontalWaterfallCollectionViewLayoutDelegate
 extension HorizontalLayoutViewController: PrettyHorizontalWaterfallCollectionViewLayoutDelegate {
 
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, referenceSizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, referenceSizeForItemAt indexPath: IndexPath) -> CGSize {
         return dataSource[indexPath.section].items[indexPath.row].size
     }
 
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, numberOfRowsInSection section: Int) -> Int {
         return dataSource[section].numberOfColumns
     }
 
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, spacingBetweenRowsInSection section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, spacingBetweenRowsInSection section: Int) -> CGFloat {
         return 10
     }
 
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, spacingBetweenColumnsInSection section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, spacingBetweenColumnsInSection section: Int) -> CGFloat {
         return 10
     }
 
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, insetsForSection section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, insetsForSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 
     /// Configure Leader
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, widthForLeaderInSection section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, widthForLeaderInSection section: Int) -> CGFloat {
         return 30
     }
 
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, insetsForLeaderInSection section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, insetsForLeaderInSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 70, left: 10, bottom: 70, right: 10)
     }
 
     /// Configure Trailer
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, widthForTrailerInSection section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, widthForTrailerInSection section: Int) -> CGFloat {
         return 30
     }
 
-    func prettyWaterfallCollectionViewLayout(_ layout: UICollectionViewLayout, insetsForTrailerInSection section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView?, layout: PrettyHorizontalWaterfallCollectionViewLayout, insetsForTrailerInSection section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 50, left: 10, bottom: 50, right: 10)
     }
 
     /// Finished some actions
-    func prettyWaterfallCollectionViewLayoutDelegate(_ layout: UICollectionViewLayout, finishCalculateContentSize contentSize: CGSize) {
+    func prettyWaterfallCollectionViewLayoutDelegate(_ layout: PrettyHorizontalWaterfallCollectionViewLayout, finishCalculateContentSize contentSize: CGSize) {
         print("contentSize: \(contentSize)")
     }
 }

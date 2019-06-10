@@ -36,9 +36,9 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
         
     @IBInspectable public var numberOfColumns: Int = 1
     
-    @IBInspectable public var rowSpacing: CGFloat = 0
+    @IBInspectable public var spacingBetweenRows: CGFloat = 0
     
-    @IBInspectable public var columnSpacing: CGFloat = 0
+    @IBInspectable public var spacingBetweenColumns: CGFloat = 0
     
     public var sectionInsets: UIEdgeInsets = UIEdgeInsets()
     
@@ -53,7 +53,7 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
     var contentSize: CGSize = CGSize() {
         didSet {
             if contentSize != oldValue {
-                delegate?.prettyWaterfallCollectionViewLayoutDelegate?(self, finishCalculateContentSize: contentSize)
+                delegate?.collectionView?(collectionView, layout: self, finishCalculateContentSize: contentSize)
             }
         }
     }
@@ -251,7 +251,7 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
     
     /// Sections data
     private func insets(forSection section: Int) -> UIEdgeInsets {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForSection: section) ?? sectionInsets
+        return delegate?.collectionView?(collectionView, layout: self, insetsForSection: section) ?? sectionInsets
     }
     
     private func numberOfItems(inSection section: Int) -> Int {
@@ -259,19 +259,19 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func numberOfColumns(inSection section: Int) -> Int {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, numberOfColumnsInSection: section) ?? numberOfColumns
+        return delegate?.collectionView?(collectionView, layout: self, numberOfColumnsInSection: section) ?? numberOfColumns
     }
     
     private func rowSpacing(forSection section: Int) -> CGFloat {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, spacingBetweenRowsInSection: section) ?? rowSpacing
+        return delegate?.collectionView?(collectionView, layout: self, spacingBetweenRowsInSection: section) ?? spacingBetweenRows
     }
     
     private func columnSpacing(forSection section: Int) -> CGFloat {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, spacingBetweenColumnsInSection: section) ?? columnSpacing
+        return delegate?.collectionView?(collectionView, layout: self, spacingBetweenColumnsInSection: section) ?? spacingBetweenColumns
     }
     
     private func referenceSize(forItemAt indexPath: IndexPath) -> CGSize {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, referenceSizeForItemAt: indexPath) ?? itemReferenceSize
+        return delegate?.collectionView?(collectionView, layout: self, referenceSizeForItemAt: indexPath) ?? itemReferenceSize
     }
     
     private func column(forItem item: Int, columnHeights: [CGFloat], renderDirection: RenderDirection) -> Int {
@@ -309,7 +309,7 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
     
     /// Headers data
     private func heightForHeaderInSection(_ section: Int) -> CGFloat {
-        if let headerHeight = delegate?.prettyWaterfallCollectionViewLayout?(self, heightForHeaderInSection: section) {
+        if let headerHeight = delegate?.collectionView?(collectionView, layout: self, heightForHeaderInSection: section) {
             return headerHeight
         }
         
@@ -317,7 +317,7 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func insetsForHeaderInSection(_ section: Int) -> UIEdgeInsets {
-        if let headerInsets = delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForHeaderInSection: section) {
+        if let headerInsets = delegate?.collectionView?(collectionView, layout: self, insetsForHeaderInSection: section) {
             return headerInsets
         }
         
@@ -326,7 +326,7 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
     
     /// Footers data
     private func heightForFooterInSection(_ section: Int) -> CGFloat {
-        if let footerHeight = delegate?.prettyWaterfallCollectionViewLayout?(self, heightForFooterInSection: section) {
+        if let footerHeight = delegate?.collectionView?(collectionView, layout: self, heightForFooterInSection: section) {
             return footerHeight
         }
         
@@ -334,7 +334,7 @@ open class PrettyVerticalWaterfallCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func footerForHeaderInSection(_ section: Int) -> UIEdgeInsets {
-        if let footerInsets = delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForFooterInSection: section) {
+        if let footerInsets = delegate?.collectionView?(collectionView, layout: self, insetsForFooterInSection: section) {
             return footerInsets
         }
         

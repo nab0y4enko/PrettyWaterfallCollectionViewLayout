@@ -36,9 +36,9 @@ open class PrettyHorizontalWaterfallCollectionViewLayout: UICollectionViewLayout
     
     @IBInspectable public var numberOfRows: Int = 1
     
-    @IBInspectable public var rowSpacing: CGFloat = 0
+    @IBInspectable public var spacingBetweenRows: CGFloat = 0
     
-    @IBInspectable public var columnSpacing: CGFloat = 0
+    @IBInspectable public var spacingBetweenColumns: CGFloat = 0
     
     public var sectionInsets: UIEdgeInsets = UIEdgeInsets()
     
@@ -53,7 +53,7 @@ open class PrettyHorizontalWaterfallCollectionViewLayout: UICollectionViewLayout
     public var contentSize: CGSize = CGSize() {
         didSet {
             if contentSize != oldValue {
-                delegate?.prettyWaterfallCollectionViewLayoutDelegate?(self, finishCalculateContentSize: contentSize)
+                delegate?.collectionView?(collectionView, layout: self, finishCalculateContentSize: contentSize)
             }
         }
     }
@@ -253,7 +253,7 @@ open class PrettyHorizontalWaterfallCollectionViewLayout: UICollectionViewLayout
     }
     
     private func insets(forSection section: Int) -> UIEdgeInsets {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForSection: section) ?? sectionInsets
+        return delegate?.collectionView?(collectionView, layout: self, insetsForSection: section) ?? sectionInsets
     }
     
     private func numberOfItems(inSection section: Int) -> Int {
@@ -261,19 +261,19 @@ open class PrettyHorizontalWaterfallCollectionViewLayout: UICollectionViewLayout
     }
     
     private func numberOfRows(inSection section: Int) -> Int {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, numberOfRowsInSection: section) ?? numberOfRows
+        return delegate?.collectionView?(collectionView, layout: self, numberOfRowsInSection: section) ?? numberOfRows
     }
     
     private func rowSpacing(forSection section: Int) -> CGFloat {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, spacingBetweenRowsInSection: section) ?? rowSpacing
+        return delegate?.collectionView?(collectionView, layout: self, spacingBetweenRowsInSection: section) ?? spacingBetweenRows
     }
     
     private func columnSpacing(forSection section: Int) -> CGFloat {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, spacingBetweenColumnsInSection: section) ?? columnSpacing
+        return delegate?.collectionView?(collectionView, layout: self, spacingBetweenColumnsInSection: section) ?? spacingBetweenColumns
     }
     
     private func referenceSize(forItemAt indexPath: IndexPath) -> CGSize {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, referenceSizeForItemAt: indexPath) ?? itemReferenceSize
+        return delegate?.collectionView?(collectionView, layout: self, referenceSizeForItemAt: indexPath) ?? itemReferenceSize
     }
     
     private func row(forItem item: Int, rowWidths: [CGFloat]) -> Int {
@@ -311,19 +311,19 @@ open class PrettyHorizontalWaterfallCollectionViewLayout: UICollectionViewLayout
     
     // MARK: - Leadings data
     private func widthForLeaderInSection(_ section: Int) -> CGFloat {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, widthForLeaderInSection: section) ?? leaderWidth
+        return delegate?.collectionView?(collectionView, layout: self, widthForLeaderInSection: section) ?? leaderWidth
     }
     
     private func insetsForLeaderInSection(_ section: Int) -> UIEdgeInsets {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForLeaderInSection: section) ?? leaderInsets
+        return delegate?.collectionView?(collectionView, layout: self, insetsForLeaderInSection: section) ?? leaderInsets
     }
     
     // MARK: - Trailers data
     private func widthForTrailerInSection(_ section: Int) -> CGFloat {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, widthForTrailerInSection: section) ?? trailerWidth
+        return delegate?.collectionView?(collectionView, layout: self, widthForTrailerInSection: section) ?? trailerWidth
     }
     
     private func insetsForTrailerInSection(_ section: Int) -> UIEdgeInsets {
-        return delegate?.prettyWaterfallCollectionViewLayout?(self, insetsForTrailerInSection: section) ?? trailerInsets
+        return delegate?.collectionView?(collectionView, layout: self, insetsForTrailerInSection: section) ?? trailerInsets
     }
 }

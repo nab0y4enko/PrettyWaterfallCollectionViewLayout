@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     spec.name              = "PrettyWaterfallCollectionViewLayout"
     spec.module_name       = "PrettyWaterfallCollectionViewLayout"
-    spec.version           = "0.3.0"
+    spec.version           = "0.4.0"
     spec.summary           = "A pretty layouts."
     spec.description       = "A pretty layouts with the ability to configure the number of column/row, based on Swift."
     spec.homepage          = "https://github.com/nab0y4enko/PrettyWaterfallCollectionViewLayout"
