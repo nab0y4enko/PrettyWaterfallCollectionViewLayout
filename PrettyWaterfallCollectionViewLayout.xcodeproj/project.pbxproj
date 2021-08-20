@@ -76,6 +76,7 @@
 		1B8D7D83220C9C1200CEB05E /* ExampleHeaderOrLeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleHeaderOrLeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		3680D3C603592D66F3AADD8D /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB7120E449BB156C98C0B15 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		AE712D3926D02F4700BF2DDC /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F2A5CE42892426DA6A359DA5 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +140,7 @@
 		1B7B3FFD1DF9DD4700ADDA47 = {
 			isa = PBXGroup;
 			children = (
+				AE712D3926D02F4700BF2DDC /* Package.swift */,
 				1B21D3CA1F8E669200E31DA3 /* README.md */,
 				1B27D0A01E07FB0C008EA305 /* Sources */,
 				1B7B40191DF9DD8C00ADDA47 /* Example */,
@@ -206,7 +208,6 @@
 				3EB7120E449BB156C98C0B15 /* Pods-Example.debug.xcconfig */,
 				F2A5CE42892426DA6A359DA5 /* Pods-Example.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
