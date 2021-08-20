@@ -12,19 +12,21 @@ let package = Package(
         .library(
             name: "PrettyWaterfallCollectionViewLayout",
             targets: [
-                "PrettyWaterfallCollectionViewLayout"
+                "HorizontalWaterfall",
+                "VerticalWaterfall"
             ]
         )
     ],
     targets: [
         .target(
-            name: "PrettyWaterfallCollectionViewLayout",
+            name: "HorizontalWaterfall",
             dependencies: [],
-            path: "Sources",
-            exclude: [
-                "PrettyWaterfallCollectionViewLayout.h",
-                "Info.plist"
-            ]
+            path: "Sources/HorizontalWaterfall"
+        ),
+        .target(
+            name: "VerticalWaterfall",
+            dependencies: [],
+            path: "Sources/VerticalWaterfall"
         )
     ]
 )
